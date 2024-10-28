@@ -42,13 +42,23 @@ const navigate = useNavigate();
     // await console.log(container);
   }, []);
   
+  function updatedatetime(){
+    const now = new Date();
+    const option = { year: 'numeric', month: 'long', day: 'numeric' };
+    const date = now.toLocaleDateString(undefined, option);
+
+    const dateTimeElement = document.getElementById('dateTime');
+    if (dateTimeElement) {
+      dateTimeElement.innerHTML = `${date}`;
+    }
+  }
+  updatedatetime();
+  setInterval(updatedatetime,1000);
+
   return (
     <>
     <div style={{ position: 'relative', overflow: 'hidden' }}>
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        loaded={particlesLoaded}
+      <Particles id="tsparticles" init={particlesInit} loaded={particlesLoaded}
         options={{
           background: {
             color: {
@@ -60,8 +70,7 @@ const navigate = useNavigate();
             number: {
               value: 200,
               density: {
-                enable: true,
-                value_area: 800,
+                enable: true, value_area: 800,
               },
             },
             color: {
@@ -71,8 +80,7 @@ const navigate = useNavigate();
               type: 'circle',
             },
             opacity: {
-              value: 0.5,
-              random: true,
+              value: 0.5, random: true,
             },
             size: {
               value: 3,
@@ -112,23 +120,10 @@ const navigate = useNavigate();
         }}
       />
     <Navbar className="navbarCSS" collapseOnSelect expand="lg" style={{position: 'relative', zIndex: "2 !important"}}>
-      {/* <Navbar className="navbarCSS" collapseOnSelect expand="lg" bg="dark" variant="dark"> */}
-        <Navbar.Brand href="/" className="text-white navTitle">Expense Management System</Navbar.Brand>
-        <Navbar.Toggle
-            aria-controls="basic-navbar-nav"
-            style={{
-              backgroundColor: "transparent",
-              borderColor: "transparent",
-            }}
-          >
-            <span
-              className="navbar-toggler-icon"
-              style={{
-                background: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")`,
-              }}
-            ></span>
-          </Navbar.Toggle>
-        <div>
+        <div className='date-time' id='dateTime'>Date</div>
+        <Navbar.Brand href="/" className="text-white-navTitle">Expense Management System</Navbar.Brand>
+        
+        <div className='login-logout'>
         <Navbar.Collapse id="responsive-navbar-nav" style={{color: "white"}}>
           {user ? (
             <>

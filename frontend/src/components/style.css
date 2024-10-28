@@ -1,14 +1,25 @@
 .navbarCSS{
-    padding: 15px 20px;
-    display: flex !important;
+    padding: 20px 50px;
+    display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between !important;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr ;
     width: 100vw;
     
 }
 
 
+
+.text-white-navTitle{
+  background: linear-gradient(135deg, #fa709a 10%, #fee140 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 35px;
+}
+
+.date-time{
+  color: white;
+}
 
 .navItemCSS{
     display: flex;
